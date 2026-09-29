@@ -8,6 +8,7 @@ import { Sparkles, X } from 'lucide-react';
 
 function AppContent() {
   const [currentPage, setCurrentPage] = useState<'home' | 'player-profile' | 'admin'>('home');
+  const [selectedPlayerId, setSelectedPlayerId] = useState<string>('2438847');
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const showToast = (message: string) => {
@@ -27,7 +28,8 @@ function AppContent() {
       {currentPage === 'home' && (
         <WaxPackClubPage
           onShowToast={showToast}
-          onOpenPlayerProfile={() => {
+          onOpenPlayerProfile={(pId?: string) => {
+            if (pId) setSelectedPlayerId(pId);
             setCurrentPage('player-profile');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
@@ -40,6 +42,8 @@ function AppContent() {
 
       {currentPage === 'player-profile' && (
         <PlayerProfilePage
+          playerId={selectedPlayerId}
+          onSelectPlayer={(pId: string) => setSelectedPlayerId(pId)}
           onBackToHome={() => {
             setCurrentPage('home');
             window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -37,7 +37,7 @@ import { searchSupabasePlayers, SupabasePlayerItem } from '../lib/supabaseAdmin'
 
 interface WaxPackClubPageProps {
   onShowToast: (msg: string) => void;
-  onOpenPlayerProfile?: () => void;
+  onOpenPlayerProfile?: (playerId?: string) => void;
   onOpenAdminPanel?: () => void;
 }
 
@@ -1156,6 +1156,10 @@ export const WaxPackClubPage: React.FC<WaxPackClubPageProps> = ({
         isOpen={!!selectedSupabasePlayerId}
         onClose={() => setSelectedSupabasePlayerId(null)}
         onShowToast={onShowToast}
+        onOpenFullProfile={(id) => {
+          setSelectedSupabasePlayerId(null);
+          if (onOpenPlayerProfile) onOpenPlayerProfile(id);
+        }}
       />
 
       {/* MODAL 2: CREAR CUENTA (REGISTRO + SELECCIÓN DE ROL) */}

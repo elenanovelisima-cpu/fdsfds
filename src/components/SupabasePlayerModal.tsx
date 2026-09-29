@@ -24,6 +24,7 @@ interface SupabasePlayerModalProps {
   isOpen: boolean;
   onClose: () => void;
   onShowToast: (msg: string) => void;
+  onOpenFullProfile?: (playerId: string) => void;
 }
 
 export const SupabasePlayerModal: React.FC<SupabasePlayerModalProps> = ({
@@ -31,6 +32,7 @@ export const SupabasePlayerModal: React.FC<SupabasePlayerModalProps> = ({
   isOpen,
   onClose,
   onShowToast,
+  onOpenFullProfile,
 }) => {
   const [playerData, setPlayerData] = useState<Record<string, any> | null>(null);
   const [loading, setLoading] = useState(false);
@@ -513,16 +515,33 @@ export const SupabasePlayerModal: React.FC<SupabasePlayerModalProps> = ({
             <span>Actualizado: <strong>{d.updated_at ? new Date(d.updated_at).toLocaleDateString('es-ES') : 'Reciente'}</strong></span>
           </div>
 
-          <button
-            type="button"
-            onClick={() => {
-              playRetroSound('click');
-              onClose();
-            }}
-            className="px-4 py-1.5 bg-[#0c3975] hover:bg-[#124b94] text-white rounded font-slab font-bold text-xs uppercase tracking-wider cursor-pointer shadow-xs"
-          >
-            Cerrar Ficha
-          </button>
+          <div className="flex items-center gap-2">
+            {onOpenFullProfile && playerId && (
+              <button
+                type="button"
+                onClick={() => {
+                  playRetroSound('burst');
+                  onClose();
+                  onOpenFullProfile(playerId);
+                }}
+                className="px-3.5 py-1.5 bg-[#c02328] hover:bg-[#991b1b] text-white rounded font-slab font-bold text-xs uppercase tracking-wider cursor-pointer shadow-xs flex items-center gap-1.5"
+              >
+                <ExternalLink size={13} />
+                <span>Página de Perfil</span>
+              </button>
+            )}
+
+            <button
+              type="button"
+              onClick={() => {
+                playRetroSound('click');
+                onClose();
+              }}
+              className="px-4 py-1.5 bg-[#0c3975] hover:bg-[#124b94] text-white rounded font-slab font-bold text-xs uppercase tracking-wider cursor-pointer shadow-xs"
+            >
+              Cerrar Ficha
+            </button>
+          </div>
         </div>
 
       </div>
