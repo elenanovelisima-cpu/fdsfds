@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-slab {
+    font-family: 'Alfa Slab One', 'Archivo Black', 'Outfit', sans-serif;
+  }
+  .font-mono-code {
+    font-family: 'Space Mono', monospace;
+  }
+  .font-condensed {
+    font-family: 'Barlow Condensed', 'Oswald', sans-serif;
+  }
+  .texture-paper-pulp {
+    background-image: url('/src/assets/images/wax_paper.jpg');
+    background-repeat: repeat;
+    background-size: 320px 320px;
+  }
+  .card-stack-depth {
+    box-shadow: 
+      3px 3px 0px rgba(0,0,0,0.25),
+      6px 6px 0px rgba(0,0,0,0.18),
+      9px 9px 0px rgba(0,0,0,0.10),
+      12px 12px 16px rgba(0,0,0,0.20);
+  }
+  .card-back-chipboard {
+    background-color: #d8ceb9;
+    background-image: radial-gradient(#ab9e82 1px, transparent 1px);
+    background-size: 8px 8px;
+  }
+  .card-texture {
+    background-color: #f6f2e8;
+  }
+  .site-container {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ========================================================================== */
+/* DYNAMIC ACCENT THEME OVERRIDES (ROJO VS NARANJA)                           */
+/* Permite cambiar desde el Admin el color de acento de toda la web          */
+/* ========================================================================== */
+[data-accent="orange"] {
+  --theme-accent: #ea580c;
+  --theme-accent-hover: #c2410c;
+  --theme-accent-light: rgba(234, 88, 12, 0.1);
+  --theme-accent-border: rgba(234, 88, 12, 0.3);
+}
+
+[data-accent="orange"] .text-\[\#c02328\],
+[data-accent="orange"] .text-\[\#b91c1c\],
+[data-accent="orange"] .text-\[\#a01c20\],
+[data-accent="orange"] .text-\[\#991b1b\],
+[data-accent="orange"] .text-rose-600,
+[data-accent="orange"] .text-rose-700,
+[data-accent="orange"] .text-red-600,
+[data-accent="orange"] .text-red-700 {
+  color: #ea580c !important;
+}
+
+[data-accent="orange"] .bg-\[\#c02328\],
+[data-accent="orange"] .bg-\[\#b91c1c\],
+[data-accent="orange"] .bg-\[\#a01c20\],
+[data-accent="orange"] .bg-\[\#991b1b\],
+[data-accent="orange"] .bg-rose-600,
+[data-accent="orange"] .bg-red-600 {
+  background-color: #ea580c !important;
+}
+
+[data-accent="orange"] .hover\:bg-\[\#a01c20\]:hover,
+[data-accent="orange"] .hover\:bg-\[\#991b1b\]:hover,
+[data-accent="orange"] .hover\:bg-\[\#c02328\]:hover,
+[data-accent="orange"] .hover\:bg-rose-700:hover,
+[data-accent="orange"] .hover\:bg-red-700:hover {
+  background-color: #c2410c !important;
+}
+
+[data-accent="orange"] .hover\:text-\[\#c02328\]:hover,
+[data-accent="orange"] .hover\:text-\[\#b91c1c\]:hover {
+  color: #ea580c !important;
+}
+
+[data-accent="orange"] .group:hover .group-hover\:text-\[\#c02328\] {
+  color: #ea580c !important;
+}
+
+[data-accent="orange"] .border-\[\#c02328\],
+[data-accent="orange"] .border-\[\#b91c1c\],
+[data-accent="orange"] .border-\[\#a01c20\],
+[data-accent="orange"] .border-rose-400,
+[data-accent="orange"] .border-rose-500,
+[data-accent="orange"] .border-rose-600 {
+  border-color: #ea580c !important;
+}
+
+[data-accent="orange"] .border-\[\#c02328\]\/30 {
+  border-color: rgba(234, 88, 12, 0.3) !important;
+}
+
+[data-accent="orange"] .border-\[\#c02328\]\/20 {
+  border-color: rgba(234, 88, 12, 0.2) !important;
+}
+
+[data-accent="orange"] .bg-\[\#c02328\]\/10,
+[data-accent="orange"] .bg-rose-50 {
+  background-color: rgba(234, 88, 12, 0.1) !important;
+}
+
+[data-accent="orange"] .bg-\[\#c02328\]\/20 {
+  background-color: rgba(234, 88, 12, 0.2) !important;
+}
+
+[data-accent="orange"] .accent-\[\#c02328\] {
+  accent-color: #ea580c !important;
+}
+
